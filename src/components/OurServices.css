@@ -1,0 +1,119 @@
+.our-services-section {
+  background: transparent;
+}
+
+/* ── Grid ── */
+.os-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+/* ── Card ── */
+.os-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 2rem 1.75rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.os-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--service-color, #8B5CF6) 8%, transparent),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.os-card:hover {
+  border-color: color-mix(in srgb, var(--service-color, #8B5CF6) 40%, transparent);
+  transform: translateY(-4px);
+}
+
+.os-card:hover::before {
+  opacity: 1;
+}
+
+/* ── Icon ── */
+.os-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--service-color, #8B5CF6) 15%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--service-color, #8B5CF6);
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* ── Text ── */
+.os-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  position: relative;
+}
+
+.os-tagline {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+  position: relative;
+}
+
+/* ── Link ── */
+.os-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--service-color, #8B5CF6);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+  position: relative;
+  margin-top: 0.25rem;
+}
+
+.os-link:hover {
+  gap: 10px;
+}
+
+/* ── Footer CTA ── */
+.os-footer-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .os-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .os-grid {
+    grid-template-columns: 1fr;
+  }
+}

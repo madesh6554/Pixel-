@@ -1,0 +1,140 @@
+.roadmap-section {
+    position: relative;
+    padding: var(--space-xl) 0;
+    overflow: hidden;
+}
+
+.roadmap-container {
+    position: relative;
+    max-width: 900px;
+    margin: 4rem auto 0;
+    padding: 0 1rem;
+}
+
+/* The Vertical Ladder Line */
+.roadmap-line-track {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(-50%);
+}
+
+.roadmap-line-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+    box-shadow: 0 0 15px var(--accent-primary);
+    transform-origin: top;
+}
+
+/* Individual Steps */
+.roadmap-step {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6rem;
+    width: 100%;
+}
+
+.roadmap-step:last-child {
+    margin-bottom: 0;
+}
+
+.roadmap-content {
+    width: 42%;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+    transition: all 0.5s ease;
+}
+
+.roadmap-step.left .roadmap-content {
+    margin-right: auto;
+}
+
+.roadmap-step.right .roadmap-content {
+    margin-left: auto;
+}
+
+/* The Number Circle */
+.roadmap-node {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background: #000;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.5s ease;
+}
+
+.roadmap-step.active .roadmap-node {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.step-number {
+    font-size: 1.1rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    color: var(--text-secondary);
+}
+
+.roadmap-step.active .step-number {
+    color: var(--accent-primary);
+}
+
+/* Typography */
+.roadmap-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.roadmap-content .icon {
+    color: var(--accent-primary);
+}
+
+.roadmap-content p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .roadmap-line-track {
+        left: 30px;
+    }
+    
+    .roadmap-node {
+        left: 30px;
+    }
+    
+    .roadmap-content {
+        width: calc(100% - 80px);
+        margin-left: 80px !important;
+    }
+    
+    .roadmap-step {
+        margin-bottom: 3rem;
+    }
+}

@@ -1,0 +1,83 @@
+.main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0.5rem 0; /* Tighter padding */
+    background: #000000; /* Pure black */
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 120px; /* Massively increased size */
+    margin: -1rem 0; /* Negative margin prevents the navigation bar from becoming way too thick */
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition-smooth);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-list {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-list a {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--accent-secondary);
+    border-radius: 2px;
+    transition: width 0.25s ease;
+}
+
+.nav-list a:hover,
+.nav-list a.active {
+    color: var(--accent-secondary);
+}
+
+.nav-list a.active::after,
+.nav-list a:hover::after {
+    width: 100%;
+}
+
+.header-cta {
+    background: #bf00ff; /* Exact magenta from screenshot */
+    color: white;
+    border-radius: 6px;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.95rem;
+    border: none;
+    box-shadow: 0 4px 15px rgba(191, 0, 255, 0.3);
+}
+
+.header-cta:hover {
+    background: #a300da;
+    transform: translateY(-2px);
+}

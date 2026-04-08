@@ -1,0 +1,402 @@
+/* ==========================================================================
+   Courses Section — Pixel-Themed Background + Cinematic Cards
+   ========================================================================== */
+
+.courses-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Pixel Background
+   -------------------------------------------------------------------------- */
+.courses-pixel-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Subtle dot grid */
+.courses-dot-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+
+/* Floating pixel squares */
+.courses-pixel {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: pixelFloat var(--px-duration) var(--px-delay) ease-in infinite;
+}
+
+@keyframes pixelFloat {
+  0%   { transform: translateY(0) rotate(0deg) scale(0.8);  opacity: 0; }
+  8%   { opacity: var(--px-opacity); }
+  85%  { opacity: var(--px-opacity); }
+  100% { transform: translateY(-110vh) rotate(270deg) scale(1.2); opacity: 0; }
+}
+
+/* Sweeping color scan lines */
+.courses-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--line-color) 30%, var(--line-color) 70%, transparent 100%);
+  opacity: 0;
+  animation: scanSweep var(--scan-duration) var(--scan-delay) ease-in-out infinite;
+}
+
+@keyframes scanSweep {
+  0%   { top: 100%; opacity: 0; }
+  5%   { opacity: 0.25; }
+  95%  { opacity: 0.08; }
+  100% { top: -2%; opacity: 0; }
+}
+
+/* Corner pixel decorations */
+.courses-corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0.25;
+}
+
+.courses-corner::before,
+.courses-corner::after {
+  content: '';
+  position: absolute;
+  background: var(--accent-primary);
+}
+
+.courses-corner::before { width: 100%; height: 2px; }
+.courses-corner::after  { width: 2px; height: 100%; }
+
+.courses-corner-tl { top: 24px; left: 24px; }
+.courses-corner-tr { top: 24px; right: 24px; transform: scaleX(-1); }
+.courses-corner-bl { bottom: 24px; left: 24px; transform: scaleY(-1); }
+.courses-corner-br { bottom: 24px; right: 24px; transform: scale(-1); }
+
+/* --------------------------------------------------------------------------
+   Course Grid
+   -------------------------------------------------------------------------- */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: var(--space-lg);
+}
+
+/* --------------------------------------------------------------------------
+   Course Card v2 — Cinematic Full-Bleed (entire card is a link)
+   -------------------------------------------------------------------------- */
+.ccv2-wrapper {
+  display: block;
+}
+
+.ccv2 {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  height: 420px;
+  cursor: pointer;
+  background: #0d0d12;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ccv2:hover {
+  transform: translateY(-10px) scale(1.012);
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.55),
+    0 0 40px color-mix(in srgb, var(--c-color) 25%, transparent);
+  border-color: color-mix(in srgb, var(--c-color) 50%, transparent);
+}
+
+/* Full-bleed image */
+.ccv2-img {
+  position: absolute;
+  inset: 0;
+}
+
+.ccv2-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.4s ease;
+  filter: brightness(0.75) saturate(1.1);
+}
+
+.ccv2:hover .ccv2-img img {
+  transform: scale(1.08);
+  filter: brightness(0.65) saturate(1.25);
+}
+
+/* Dark gradient overlay — bottom heavy */
+.ccv2-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.05) 0%,
+    rgba(0,0,0,0.1)  30%,
+    rgba(0,0,0,0.55) 60%,
+    rgba(0,0,0,0.92) 100%
+  );
+  transition: opacity 0.4s ease;
+}
+
+/* Color tint */
+.ccv2-img-tint {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.4s ease;
+}
+
+.ccv2:hover .ccv2-img-tint {
+  opacity: 2;
+}
+
+/* ---------- Image inner animations ---------- */
+
+/* Shimmer sweep — diagonal light stripe scrolling across image */
+.ccv2-img-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.12) 50%,
+    transparent 70%
+  );
+  background-size: 250% 100%;
+  animation: imgShimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes imgShimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Colored scanline sweeping upward inside image */
+.ccv2-img-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--img-scan-color),
+    transparent
+  );
+  opacity: 0.55;
+  animation: imgScanline 3s linear infinite;
+  pointer-events: none;
+  filter: blur(0.5px);
+}
+
+@keyframes imgScanline {
+  0%   { top: 100%; opacity: 0; }
+  5%   { opacity: 0.55; }
+  95%  { opacity: 0.3; }
+  100% { top: 0%;   opacity: 0; }
+}
+
+/* Subtle pixel-grid overlay on the image */
+.ccv2-img-pixelgrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.ccv2:hover .ccv2-img-pixelgrid {
+  opacity: 1;
+}
+
+/* Pixel corner accent — top-right */
+.ccv2-pixel-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  background:
+    linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--c-color) 30%, transparent) 50%);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  transition: clip-path 0.3s ease;
+}
+
+/* Icon badge — top-left */
+.ccv2-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--c-color);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  color: #fff;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.ccv2:hover .ccv2-badge {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--c-color) 40%, rgba(0,0,0,0.4));
+}
+
+/* Sparkle accent — floats on image */
+.ccv2-sparkle {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  opacity: 0;
+  transform: scale(0.5) rotate(-20deg);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 2;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.ccv2:hover .ccv2-sparkle {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* Bottom content panel */
+.ccv2-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 1.5rem 1.25rem;
+  z-index: 2;
+  transform: translateY(4px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ccv2:hover .ccv2-content {
+  transform: translateY(-4px);
+}
+
+/* Thin color bar above content */
+.ccv2-color-bar {
+  width: 36px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--c-color);
+  margin-bottom: 0.75rem;
+  transition: width 0.35s ease;
+  box-shadow: 0 0 10px var(--c-color);
+}
+
+.ccv2:hover .ccv2-color-bar {
+  width: 60px;
+}
+
+.ccv2-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+
+.ccv2-tagline {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.62);
+  line-height: 1.5;
+  margin: 0 0 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 2.5em;
+  transition: color 0.3s ease;
+}
+
+.ccv2:hover .ccv2-tagline {
+  color: rgba(255,255,255,0.78);
+}
+
+/* CTA span (parent card is the link) */
+.ccv2-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--c-color);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: gap 0.25s ease, filter 0.25s ease;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--c-color) 60%, transparent));
+}
+
+.ccv2:hover .ccv2-cta {
+  gap: 10px;
+  filter: drop-shadow(0 0 10px var(--c-color)) brightness(1.2);
+}
+
+/* Animated glow border */
+.ccv2-glow-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--c-color) 70%, transparent);
+}
+
+.ccv2:hover .ccv2-glow-border {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ccv2 {
+    height: 380px;
+  }
+}

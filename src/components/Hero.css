@@ -1,0 +1,150 @@
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: var(--space-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* ==========================================================================
+   Two-column layout
+   ========================================================================== */
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Left column ── */
+.hero-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.hero-welcome-intro {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    color: var(--accent-secondary);
+    margin-bottom: 0.4rem;
+    opacity: 0.8;
+}
+
+.hero-brand-name {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    margin-bottom: 0.9rem;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 1.1rem;
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 50px;
+    color: var(--accent-secondary);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 1.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.12);
+    backdrop-filter: blur(10px);
+}
+
+.hero-title {
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem); /* Refined 'best fit' scale */
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.25rem;
+    max-width: 480px;
+    line-height: 1.75;
+}
+
+.hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ── Right column: floating robot ── */
+.hero-visual {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+}
+
+
+.hero-image {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    /* Key trick: blends dark bg pixels away on the dark page */
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 0 35px rgba(236, 72, 153, 0.35))
+            drop-shadow(0 0 80px rgba(139, 92, 246, 0.2));
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 0;
+        padding-top: 2rem;
+    }
+
+    .hero-text {
+        align-items: center;
+        text-align: center;
+        order: 2;
+    }
+
+    .hero-visual {
+        order: 1;
+        min-height: 260px;
+        width: 100%;
+    }
+
+    .hero-image {
+        max-width: 300px;
+    }
+
+    .hero-subtitle {
+        max-width: 100%;
+    }
+
+    .hero-ctas {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,92 @@
+.trusted-section {
+    padding: var(--space-xl) 0;
+    background: transparent;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.trusted-label {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: var(--space-xl);
+}
+
+.marquee-container {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    /* Edge fade mask for premium look */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    gap: 6rem; /* Increased gap to give larger logos space */
+    white-space: nowrap;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+    align-items: center;
+    /* To make -50% translation loop perfectly, we must add a fake trailing gap so the math is exactly equal */
+    padding: 1rem 6rem 1rem 0; 
+    will-change: transform; /* Hardware acceleration for buttery smooth scrolling */
+}
+
+/* Pause the scrolling animation when a user hovers */
+.marquee-content:hover {
+    animation-play-state: paused;
+}
+
+.partner-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    min-width: 200px; /* Accommodate larger image base width */
+    margin: 0;
+    flex-shrink: 0;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.partner-logo:hover {
+    transform: translateY(-5px); /* Lift element off the ground slightly */
+}
+
+.partner-logo img {
+    height: 110px; /* Increased the size a little bit more */
+    width: auto;
+    max-width: 280px; /* Allowing much wider logos to correctly scale */
+    object-fit: contain;
+    transition: var(--transition-smooth);
+}
+
+.partner-logo figcaption {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    text-align: center;
+    font-family: var(--font-body);
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.partner-logo:hover figcaption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
