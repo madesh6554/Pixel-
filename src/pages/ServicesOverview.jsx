@@ -3,14 +3,14 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
-  Globe, Code2, Target, Palette, Search, Share2, ArrowRight,
+  Globe, Code2, Target, Palette, Search, Share2, Zap, ArrowRight,
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { servicesData } from '../data/servicesData';
 import './ServicesOverview.css';
 
-const iconMap = { Globe, Code2, Target, Palette, Search, Share2 };
+const iconMap = { Globe, Code2, Target, Palette, Search, Share2, Zap };
 
 const ServicesOverview = () => {
   return (
@@ -37,7 +37,7 @@ const ServicesOverview = () => {
             >
               <span className="brand-subtitle">What We Do</span>
               <h1>
-                Six ways we help your <span className="highlight">brand grow.</span>
+                Seven ways we help your <span className="highlight">brand grow.</span>
               </h1>
               <p className="sov-hero-desc">
                 We're a full-service creative intelligence agency. Every discipline below works

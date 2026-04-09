@@ -12,11 +12,13 @@ import CoursesPage from './pages/CoursesPage';
 import ContactPage from './pages/ContactPage';
 import AnimatedBackground from './components/AnimatedBackground';
 import ScrollToTop from './components/ScrollToTop';
+import ChatBot from './components/ChatBot';
 
 function App() {
   return (
     <HelmetProvider>
       <AnimatedBackground />
+      <ChatBot />
       <Router>
         <ScrollToTop />
         <Routes>

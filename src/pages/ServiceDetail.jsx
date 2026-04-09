@@ -14,6 +14,8 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ServiceImageSlider from '../components/ServiceImageSlider';
+import AutomationMap from '../components/AutomationMap';
 import { getServiceBySlug, servicesData } from '../data/servicesData';
 import './ServiceDetail.css';
 
@@ -63,37 +65,52 @@ const ServiceDetail = () => {
         {/* ── HERO ── */}
         <section className="sd-hero section-padding" style={{ '--service-color': service.color }}>
           <div className="container">
-            <motion.div
-              className="sd-hero-inner"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9 }}
-            >
-              <Link to="/services" className="sd-back-link">
-                <ArrowLeft size={16} /> All Services
-              </Link>
+            <div className="sd-hero-layout">
+              {/* Left — text */}
+              <motion.div
+                className="sd-hero-inner"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9 }}
+              >
+                <Link to="/services" className="sd-back-link">
+                  <ArrowLeft size={16} /> All Services
+                </Link>
 
-              <div className="sd-hero-icon">
-                <Icon name={service.icon} size={36} />
-              </div>
+                <div className="sd-hero-icon">
+                  <Icon name={service.icon} size={36} />
+                </div>
 
-              <h1 className="sd-hero-title">
-                <span className="highlight">{service.title}</span>
-              </h1>
+                <h1 className="sd-hero-title">
+                  <span className="highlight">{service.title}</span>
+                </h1>
 
-              <p className="sd-hero-tagline">"{service.tagline}"</p>
+                <p className="sd-hero-tagline">"{service.tagline}"</p>
 
-              <p className="sd-hero-desc">{service.heroDesc}</p>
+                <p className="sd-hero-desc">{service.heroDesc}</p>
 
-              <div className="sd-hero-btns">
-                <a href="https://wa.me/919045860876" className="btn btn-primary">
-                  Start on WhatsApp
-                </a>
-                <a href="mailto:contactthepixelcompany@gmail.com" className="btn btn-secondary">
-                  Send an Email
-                </a>
-              </div>
-            </motion.div>
+                <div className="sd-hero-btns">
+                  <a href="https://wa.me/919045860876" className="btn btn-primary">
+                    Start on WhatsApp
+                  </a>
+                  <a href="mailto:contactthepixelcompany@gmail.com" className="btn btn-secondary">
+                    Send an Email
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* Right — image slider */}
+              {service.images && service.images.length > 0 && (
+                <motion.div
+                  className="sd-hero-slider"
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.9, delay: 0.2 }}
+                >
+                  <ServiceImageSlider images={service.images} color={service.color} />
+                </motion.div>
+              )}
+            </div>
 
             {/* Decorative glow */}
             <div
@@ -112,23 +129,55 @@ const ServiceDetail = () => {
               <p>Every engagement is tailored — here's the complete toolkit we bring.</p>
             </motion.header>
 
-            <div className="sd-offerings-grid">
-              {service.offerings.map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="sd-offering-card"
-                  style={{ '--service-color': service.color }}
-                  {...fadeUp(i * 0.07)}
-                >
-                  <div className="sd-offering-icon">
-                    <Icon name={item.icon} size={20} />
-                  </div>
-                  <div>
-                    <h3 className="sd-offering-title">{item.title}</h3>
-                    <p className="sd-offering-desc">{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
+            {service.slug === 'automation' ? (
+              <motion.div {...fadeUp(0.1)}>
+                <AutomationMap color={service.color} />
+              </motion.div>
+            ) : null}
+
+            <div className={`sd-offerings-grid${service.slug === 'automation' ? ' sd-offerings-grid--hidden' : ''}`}>
+              {service.offerings.map((item, i) => {
+                const hasImg = !!item.image;
+                const isFeatured = hasImg && i === service.offerings.length - 1;
+                const cardClass = [
+                  'sd-offering-card',
+                  hasImg ? 'sd-offering-card--img' : '',
+                  isFeatured ? 'sd-offering-card--featured' : '',
+                ].filter(Boolean).join(' ');
+
+                return (
+                  <motion.div
+                    key={i}
+                    className={cardClass}
+                    style={{ '--service-color': service.color }}
+                    {...fadeUp(i * 0.07)}
+                  >
+                    {hasImg && (
+                      <div className="sd-offering-img-wrap">
+                        <img src={item.image} alt={item.title} className="sd-offering-img" loading="lazy" />
+                        <div className="sd-offering-img-overlay" />
+                      </div>
+                    )}
+                    {/* Icon floats top-right for regular img cards; lives in body for featured/non-img */}
+                    {hasImg && !isFeatured && (
+                      <div className="sd-offering-icon">
+                        <Icon name={item.icon} size={18} />
+                      </div>
+                    )}
+                    <div className="sd-offering-body">
+                      {(!hasImg || isFeatured) && (
+                        <div className="sd-offering-icon">
+                          <Icon name={item.icon} size={20} />
+                        </div>
+                      )}
+                      <div>
+                        <h3 className="sd-offering-title">{item.title}</h3>
+                        <p className="sd-offering-desc">{item.desc}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>

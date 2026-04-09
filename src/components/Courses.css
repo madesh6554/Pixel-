@@ -104,7 +104,7 @@
   position: relative;
   border-radius: 18px;
   overflow: hidden;
-  height: 420px;
+  height: 460px;
   cursor: pointer;
   background: #0d0d12;
   border: 1px solid rgba(255,255,255,0.06);
@@ -333,14 +333,14 @@
 .ccv2-tagline {
   font-size: 0.82rem;
   color: rgba(255,255,255,0.62);
-  line-height: 1.5;
+  line-height: 1.55;
   margin: 0 0 1rem;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  max-height: 2.5em;
+  max-height: 3.9em;
   transition: color 0.3s ease;
 }
 

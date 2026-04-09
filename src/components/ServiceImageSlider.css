@@ -1,0 +1,52 @@
+/* ==========================================================================
+   ServiceImageSlider — Canvas Pixel-Mosaic Transition
+   ========================================================================== */
+
+.sds-root {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+}
+
+/* ── Frame ── */
+.sds-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #08080f;
+  /* Edges melt into the page background */
+  -webkit-mask-image: radial-gradient(ellipse 88% 86% at 50% 50%, black 40%, transparent 100%);
+  mask-image:         radial-gradient(ellipse 88% 86% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* ── Canvas fills the frame ── */
+.sds-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── Dot indicators ── */
+.sds-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.sds-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transform: rotate(45deg);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.sds-dot--active {
+  transform: rotate(45deg) scale(1.35);
+}

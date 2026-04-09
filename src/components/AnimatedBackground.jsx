@@ -9,12 +9,12 @@ import './AnimatedBackground.css';
 const SETTINGS = {
   SPACING: 18,       // Higher density to match the reference image
   MOUSE_RADIUS: 160, // Slightly larger influence
-  PUSH_STRENGTH: 0.32, 
-  FRICTION: 0.9,     
-  EASE: 0.075,        // Slower return for a more 'fluid' water feel
+  PUSH_STRENGTH: 0.52,
+  FRICTION: 0.88,
+  EASE: 0.13,        // Faster return
   DOT_SIZE: 0.85,    // Smaller, more refined dots
   BASE_OPACITY: 0.15,
-  BLUR_STRENGTH: '50px' 
+  BLUR_STRENGTH: '50px'
 };
 
 const AnimatedBackground = () => {

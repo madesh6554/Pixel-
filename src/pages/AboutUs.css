@@ -1,5 +1,5 @@
 .about-page {
-    background: #000;
+    background: transparent;
     min-height: 100vh;
 }
 
@@ -10,6 +10,7 @@
     min-height: 500px;
     width: 100%;
     overflow: hidden;
+    margin-top: 80px;
 }
 
 .hero-image-wrapper {

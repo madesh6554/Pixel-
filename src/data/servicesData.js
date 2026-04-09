@@ -1,32 +1,48 @@
 // All 6 service pages — full content data
 
+// Automation service images
+import automationBanner from '../assets/partners images/services/Automation-Banner.webp';
+import automationLeadGen from '../assets/partners images/services/Automation -Lead-Generation.webp';
+import automationCustomerSupport from '../assets/partners images/services/Automation-Customer-Support.webp';
+import automationECommerce from '../assets/partners images/services/Automation-E-Commerce.webp';
+import automationHumanBot from '../assets/partners images/services/Automation-Human-Bot.webp';
+import automationMarketing from '../assets/partners images/services/Automation-Marketting.webp';
+import automationServiceBot from '../assets/partners images/services/Automation-Service-Bot.webp';
+import automationTaskAutomation from '../assets/partners images/services/Automation-Task-Automation.webp';
+import automationWhyModern from '../assets/partners images/services/Automation-Why-Modern-1-min.webp';
+
 export const servicesData = [
   {
     slug: 'digital-marketing',
     title: 'Digital Marketing',
     icon: 'Globe',
     color: '#8B5CF6',
-    tagline: 'Every click, a conversation. Every conversion, a story.',
+    tagline: 'We Don\'t Just Run Ads. We Build Digital Eco-Systems that Sell.',
+    images: [
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&h=450&q=80',
+      'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&h=450&q=80',
+      'https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=600&h=450&q=80',
+    ],
     heroDesc:
-      "We build digital ecosystems that keep your brand top-of-mind, every hour of every day. From content strategy to analytics, we run the full digital marketing lifecycle — so you grow while you sleep.",
+      "Pixel builds data-driven, creative marketing systems that sustain attention and deliver consistent, measurable, human-centered growth today.",
     offerings: [
-      { icon: 'Calendar', title: 'Content Strategy & Planning', desc: 'Monthly content calendars aligned with your brand voice and business goals.' },
-      { icon: 'BarChart2', title: 'Campaign Management', desc: 'End-to-end multi-channel campaigns — planned, executed, and optimised.' },
-      { icon: 'Mail', title: 'Email Marketing', desc: 'Sequences that nurture leads and convert prospects into paying customers.' },
-      { icon: 'PieChart', title: 'Analytics & Reporting', desc: 'Clear dashboards showing what\'s working and exactly what to improve.' },
-      { icon: 'Megaphone', title: 'Brand Content Creation', desc: 'Reels, graphics, carousels, and copy built to stop the scroll.' },
-      { icon: 'Share2', title: 'Social Media Management', desc: 'Consistent publishing, engagement, and community growth across platforms.' },
+      { icon: 'Globe', title: 'Meta Ads Management', desc: 'We design Meta campaigns that think like humans and perform like machines using precise audience targeting, data-backed creative testing, and funnel systems that scale sustainably.' },
+      { icon: 'Search', title: 'Google & YouTube Ads', desc: 'We build ad ecosystems that appear at the exact moment your customer is ready to decide, with every keyword and conversion point crafted to turn curiosity into clicks.' },
+      { icon: 'TrendingUp', title: 'SEO', desc: 'We focus on sustainable SEO that ranks because it deserves to, driven by meaningful content, strong structure, and relevance.' },
+      { icon: 'BarChart2', title: 'Analytics & Optimisation', desc: 'Our analytics framework turns complex data into a clear direction, showing what to scale, what to stop, and how to grow smarter.' },
+      { icon: 'MousePointer', title: 'Conversion & Funnel Design', desc: 'We map the path from the first click to the final action, aligning emotion, design, and logic to make every user journey feel natural and result-oriented.' },
+      { icon: 'Layers', title: 'Strategy & Growth Systems', desc: 'We build growth systems that connect every piece of your marketing puzzle — ads, content, SEO, and funnels — focused on consistency, clarity, and scale.' },
     ],
     process: [
-      { step: '01', title: 'Audit', desc: 'We map your current digital presence and surface the gaps your competitors are exploiting.' },
-      { step: '02', title: 'Strategy', desc: 'A 90-day plan tailored to your goals, audience, and competitive landscape.' },
-      { step: '03', title: 'Execute', desc: 'We deploy content, campaigns, and tracking systems — no half-measures.' },
-      { step: '04', title: 'Optimise', desc: 'Weekly data review to refine, scale what works, and cut what doesn\'t.' },
+      { step: '01', title: 'Audit', desc: 'We map your current digital presence, identify gaps, and understand where your audience is — and where they\'re going.' },
+      { step: '02', title: 'Strategy', desc: 'A tailored growth plan built around your goals, audience behaviour, and competitive landscape.' },
+      { step: '03', title: 'Execute', desc: 'We deploy campaigns, content, and tracking systems — built to run together, not in silos.' },
+      { step: '04', title: 'Optimise', desc: 'Continuous data review to refine targeting, improve creative, and scale what converts.' },
     ],
     whyPixel: [
-      { icon: 'Target', title: 'Strategy Before Tactics', desc: 'We don\'t post for the sake of it. Every piece of content has a role in your growth funnel.' },
-      { icon: 'TrendingUp', title: 'Data at the Core', desc: 'Our decisions come from your numbers, not gut feelings or industry trends.' },
-      { icon: 'Zap', title: 'Speed Without Chaos', desc: 'Rapid execution with a system that keeps every campaign consistent and on-brand.' },
+      { icon: 'Layers', title: 'Integrated Growth Systems', desc: 'Ads, content, SEO, and funnels work together under one unified strategy — not managed by separate teams pulling in different directions.' },
+      { icon: 'TrendingUp', title: 'Insight-Led Strategy', desc: 'We plan around data, timing, and human behaviour — not trending tactics that disappear next month.' },
+      { icon: 'Zap', title: 'Creativity That Converts', desc: 'Ideas shaped by audience psychology, turning storytelling into measurable performance that compounds with every campaign.' },
     ],
   },
 
@@ -36,6 +52,11 @@ export const servicesData = [
     icon: 'Code2',
     color: '#6366F1',
     tagline: 'Your website should be your best salesperson.',
+    images: [
+      'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&h=450&q=80',
+      'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=600&h=450&q=80',
+      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=450&q=80',
+    ],
     heroDesc:
       "We build websites that do more than look good — they load fast, convert visitors, and represent your brand with precision. No templates, no bloat. Purpose-built digital experiences that work 24/7.",
     offerings: [
@@ -66,6 +87,11 @@ export const servicesData = [
     icon: 'Target',
     color: '#EC4899',
     tagline: 'Every rupee spent should return more than it costs.',
+    images: [
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&h=450&q=80',
+      'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&h=450&q=80',
+      'https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=600&h=450&q=80',
+    ],
     heroDesc:
       "We run paid ads built around data, not guesswork. Whether it's Google, Meta, or YouTube — we find your audience, deliver the right message at the right moment, and scale only what converts.",
     offerings: [
@@ -96,6 +122,11 @@ export const servicesData = [
     icon: 'Palette',
     color: '#F59E0B',
     tagline: 'People don\'t buy products. They buy identities.',
+    images: [
+      'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=600&h=450&q=80',
+      'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&h=450&q=80',
+      'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&h=450&q=80',
+    ],
     heroDesc:
       "A great brand isn't just a logo — it's the feeling people get when they hear your name. We help you define who you are, what you stand for, and how the world should see you. Then we make it impossible to ignore.",
     offerings: [
@@ -126,6 +157,11 @@ export const servicesData = [
     icon: 'Search',
     color: '#10B981',
     tagline: 'The best place to hide something is page two of Google.',
+    images: [
+      'https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=600&h=450&q=80',
+      'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&h=450&q=80',
+      'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=600&h=450&q=80',
+    ],
     heroDesc:
       "We get your brand to the top of search results — and keep it there. Our SEO approach combines technical precision, content strategy, and authority building to deliver sustainable, compounding organic growth.",
     offerings: [
@@ -156,6 +192,11 @@ export const servicesData = [
     icon: 'Share2',
     color: '#3B82F6',
     tagline: 'Followers are a vanity metric. Community is everything.',
+    images: [
+      'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=600&h=450&q=80',
+      'https://images.unsplash.com/photo-1562564055-71e051d33c19?auto=format&fit=crop&w=600&h=450&q=80',
+      'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=600&h=450&q=80',
+    ],
     heroDesc:
       "We build engaged social communities around your brand. From content creation to community management, we turn your social media into a real growth engine — not just a publishing calendar that burns your team out.",
     offerings: [
@@ -177,6 +218,41 @@ export const servicesData = [
       { icon: 'Heart', title: 'Community Over Vanity', desc: 'We optimise for engaged followers who become customers — not inflated numbers that never convert.' },
       { icon: 'Camera', title: 'Creative That Fits the Platform', desc: 'Content made for Instagram doesn\'t belong on LinkedIn. We build native content for each channel.' },
       { icon: 'TrendingUp', title: 'Tied to Business Goals', desc: 'Every social strategy links back to leads, sales, or brand authority — not just likes.' },
+    ],
+  },
+
+  {
+    slug: 'automation',
+    title: 'Automation',
+    icon: 'Zap',
+    color: '#F97316',
+    tagline: 'How much time would you save if everything was automated?',
+    images: [
+      automationBanner,
+      automationWhyModern,
+      automationHumanBot,
+    ],
+    heroDesc:
+      "We build automated systems that reduce manual work, speed up decisions, and keep your entire process running smoothly — saving you up to 6–10 hours every day. Stop doing tasks manually. Start scaling intentionally.",
+    offerings: [
+      { icon: 'Users', title: 'Lead & Sales Automation Bots', desc: 'Automation evaluates interest, organises responses, integrates with your tools, and keeps your sales pipeline active without daily effort.', image: automationLeadGen },
+      { icon: 'ShoppingCart', title: 'E-Commerce & Product Sales Bots', desc: 'Reads your catalogue, understands preferences, and suggests the right items instantly — giving customers a reliable and effortless shopping experience.', image: automationECommerce },
+      { icon: 'MessageSquare', title: 'Customer Support & Experience Automation', desc: 'Instant replies remove repetitive queries and track orders automatically. Teams save nearly 10 hours every day while customers receive support within seconds.', image: automationCustomerSupport },
+      { icon: 'Calendar', title: 'Service Business Bots', desc: 'Scheduling flows fill slots, send reminders, and manage cancellations — saving around 4 hours daily while reducing no-shows significantly.', image: automationServiceBot },
+      { icon: 'Megaphone', title: 'Marketing Campaigning Bots', desc: 'Smart workflows segment audiences, deliver updates, and scale promotions reliably — improving reach and response rates across every channel.', image: automationMarketing },
+      { icon: 'Bell', title: 'Internal Operations & HR Bots', desc: 'Smart workflows deliver instant policy access, handle updates, and route requests correctly — reducing daily workload and keeping information organised.', image: automationTaskAutomation },
+      { icon: 'Activity', title: 'Hybrid Human + Bot Handover', desc: 'Smart flows detect when human help is needed, escalate instantly, and maintain context — making support faster, clearer, and more reliable.', image: automationHumanBot },
+    ],
+    process: [
+      { step: '01', title: 'Analyse — Discovery & Audit', desc: 'We study your current processes, locate bottlenecks, and identify tasks that drain time or break consistency. This step reveals what to automate, why, and where the biggest impact lies.' },
+      { step: '02', title: 'Blueprint — Architecture & Design', desc: 'We blueprint your automation system — workflows, triggers, actions, tools, integrations, and data flow. This stage ensures the solution is scalable, secure, and aligned with your business logic.' },
+      { step: '03', title: 'Build — Development & Integration', desc: 'We build the actual automation nodes, workflows, API connections, triggers, and routing logic. Your existing tools are connected seamlessly so everything runs as one unified system.' },
+      { step: '04', title: 'Deploy — Deployment & Handoff', desc: 'We test the automation, deploy it with zero downtime, and train your internal team. Once live, your workflows run automatically while you stay fully in control.' },
+    ],
+    whyPixel: [
+      { icon: 'Settings', title: 'Tailored Workflows, Not Templates', desc: 'Most companies install generic automations that barely fit their process. We build systems around your logic, your tools, and your operational challenges — delivering precision from day one.' },
+      { icon: 'Zap', title: 'Speed Decides Who Wins', desc: 'Customers expect instant replies, instant updates, and instant action. We automate workflows so tasks that took hours now happen in seconds — giving your business a real competitive edge.' },
+      { icon: 'TrendingUp', title: 'Built to Scale Without Hiring', desc: 'Growing businesses can\'t keep hiring just to handle repetitive tasks. Automation reduces human error and frees your team to focus on real work that drives revenue.' },
     ],
   },
 ];

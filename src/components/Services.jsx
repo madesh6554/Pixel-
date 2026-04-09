@@ -8,28 +8,68 @@ const groundWork = [
     title: 'Identity & Storytelling',
     tagline: 'Identity is the root of growth.',
     desc: 'Redesigning how the world perceives your brand.',
-    details: 'Is your brand getting ignored? We help you define your voice, sharpen your story, and redesign your identity so people know exactly what you stand for and why you matter. We focus on connection, not just attention.',
+    details: {
+      intro: 'Is your brand getting ignored? We help you define your voice, sharpen your story, and redesign your identity so people know exactly what you stand for and why you matter. We focus on connection, not just attention.',
+      points: [
+        'Brand strategy & positioning — we craft a clear narrative that sets you apart from competitors.',
+        'Visual identity design — logos, colour systems, typography, and brand guidelines built to last.',
+        'Brand voice & messaging — consistent tone across every touchpoint, from social to sales decks.',
+        'Story architecture — a compelling origin and mission story that makes audiences genuinely care.',
+        'Audience alignment — we map your identity to what your ideal customer actually feels and needs.',
+      ],
+      closing: 'Most brands compete on features. We make yours compete on meaning — and meaning wins.',
+    },
     icon: <Fingerprint size={32} className="card-icon" />,
   },
   {
     title: 'Performance Systems',
     tagline: 'Campaigns engineered to convert.',
     desc: 'Data-driven funnels that scale sustainably.',
-    details: 'We combine strategy, performance marketing, and system-based growth. We optimize your funnels, refine your targeting, and set up tracking systems that scale your revenue without burning your budget.',
+    details: {
+      intro: 'We combine strategy, performance marketing, and system-based growth to turn your ad spend into predictable revenue. We optimize your funnels, refine your targeting, and set up tracking systems that scale without burning your budget.',
+      points: [
+        'Full-funnel performance marketing — Meta, Google, and YouTube ads designed for measurable ROI.',
+        'Conversion rate optimisation — landing pages, copy, and offers tested and refined continuously.',
+        'Audience research & segmentation — finding the right people at the right stage of intent.',
+        'Analytics & tracking setup — pixel events, GA4, dashboards so you always know what\'s working.',
+        'Retargeting systems — warming cold audiences and re-engaging drop-offs to maximise every rupee.',
+      ],
+      closing: 'No guesswork. Just data-backed decisions that compound your results month over month.',
+    },
     icon: <TrendingUp size={32} className="card-icon" />,
   },
   {
     title: 'Automation & Logic',
     tagline: 'Systems that run on intelligence.',
     desc: 'Automated workflows that save time and cost.',
-    details: 'We organise your entire ecosystem. From automated content layers to internal workflow triggers, we build technical precision into your growth so you can move faster and grow consistently.',
+    details: {
+      intro: 'We organise your entire digital ecosystem. From automated content pipelines to internal workflow triggers, we build technical precision into your growth so you can move faster and scale consistently — without adding headcount.',
+      points: [
+        'CRM & pipeline automation — leads captured, nurtured, and followed up without manual effort.',
+        'AI-powered content workflows — repurpose one piece of content across platforms automatically.',
+        'Email & WhatsApp sequences — timed, behaviour-triggered communications that convert.',
+        'Internal ops automation — repetitive tasks eliminated so your team focuses on high-value work.',
+        'Tool integrations & Zapier/Make flows — connecting your entire stack into one seamless system.',
+      ],
+      closing: 'Manual work is a cost. Automation is an asset. We build the asset for you.',
+    },
     icon: <Zap size={32} className="card-icon" />,
   },
   {
     title: 'Creative Intelligence',
     tagline: 'Sharing the systems of tomorrow.',
     desc: 'Education for creators and entrepreneurs.',
-    details: 'We believe creativity should be shared. Our programs help marketers and entrepreneurs learn branding, digital marketing, and AI-driven creativity—the same systems we use internally at the agency.',
+    details: {
+      intro: 'We believe creativity should be accessible. Our education programs teach marketers, creators, and entrepreneurs the exact systems we use inside The Pixel Company — branding, digital marketing, AI-driven content, and more.',
+      points: [
+        'Structured courses — from brand fundamentals to advanced AI tools, built for practical outcomes.',
+        'Live cohorts & workshops — real-time learning with feedback, community, and accountability.',
+        'AI & prompt engineering training — master the tools that are reshaping creative industries.',
+        'Marketing playbooks — step-by-step systems for growing audiences and generating leads.',
+        'Creator economy strategy — turning knowledge, skill, and content into sustainable income.',
+      ],
+      closing: 'We don\'t just teach theory. We hand you the same systems we\'ve used to build brands from zero.',
+    },
     icon: <BookOpen size={32} className="card-icon" />,
   },
 ];
@@ -122,7 +162,13 @@ const Services = () => {
               </div>
 
               <div className="modal-body">
-                {selectedPillar.details}
+                <p className="modal-intro">{selectedPillar.details.intro}</p>
+                <ul className="modal-points">
+                  {selectedPillar.details.points.map((pt, idx) => (
+                    <li key={idx}>{pt}</li>
+                  ))}
+                </ul>
+                <p className="modal-closing">{selectedPillar.details.closing}</p>
               </div>
 
               <div className="modal-cta">
