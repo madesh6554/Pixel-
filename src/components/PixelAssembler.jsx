@@ -1,12 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const PixelAssembler = ({ src, className, alt }) => {
+const PixelAssembler = ({ src, className, alt, replayInterval = 0, minimal = false }) => {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
   const [isAssembled, setIsAssembled] = useState(false);
+  const [cycle, setCycle] = useState(0);
   const animationRef = useRef(null);
   const particlesRef = useRef([]);
+
+  useEffect(() => {
+    if (!replayInterval || !isAssembled) return;
+    const id = setTimeout(() => {
+      setIsAssembled(false);
+      setCycle((c) => c + 1);
+    }, replayInterval);
+    return () => clearTimeout(id);
+  }, [isAssembled, replayInterval]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -104,46 +114,64 @@ const PixelAssembler = ({ src, className, alt }) => {
     };
 
     return () => cancelAnimationFrame(animationRef.current);
-  }, [src]);
+  }, [src, cycle]);
 
   return (
     <div ref={containerRef} className={`pixel-assembler-container ${className}`} style={{ position: 'relative', width: '100%' }}>
-      <canvas 
-        ref={canvasRef} 
-        style={{ 
-          display: 'block', 
-          width: '100%', 
+      <canvas
+        ref={canvasRef}
+        style={{
+          display: 'block',
+          width: '100%',
           height: 'auto',
           opacity: isAssembled ? 0 : 1,
           transition: 'opacity 0.8s ease-in-out',
-          mixBlendMode: 'screen',
-          filter: 'drop-shadow(0 0 15px rgba(236, 72, 153, 0.4))'
-        }} 
+          mixBlendMode: minimal ? 'normal' : 'screen',
+          filter: minimal ? 'none' : 'drop-shadow(0 0 15px rgba(236, 72, 153, 0.4))'
+        }}
       />
       {isAssembled && (
-        <motion.img 
-          src={src} 
-          alt={alt} 
-          className={className}
-          initial={{ opacity: 0 }}
-          animate={{ 
-            opacity: 1,
-            y: [0, -18, 0] 
-          }}
-          transition={{ 
-            opacity: { duration: 0.8 },
-            y: { duration: 5, repeat: Infinity, ease: 'easeInOut' }
-          }}
-          style={{ 
-            position: 'absolute', 
-            top: 0, 
-            left: 0, 
-            width: '100%', 
-            height: 'auto',
-            mixBlendMode: 'screen',
-            filter: 'drop-shadow(0 0 35px rgba(236, 72, 153, 0.35)) drop-shadow(0 0 80px rgba(139, 92, 246, 0.2))'
-          }} 
-        />
+        minimal ? (
+          <motion.img
+            src={src}
+            alt={alt}
+            className={className}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ opacity: { duration: 0.6 } }}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: 'auto'
+            }}
+          />
+        ) : (
+          <motion.img
+            src={src}
+            alt={alt}
+            className={className}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              y: [0, -18, 0]
+            }}
+            transition={{
+              opacity: { duration: 0.8 },
+              y: { duration: 5, repeat: Infinity, ease: 'easeInOut' }
+            }}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: 'auto',
+              mixBlendMode: 'screen',
+              filter: 'drop-shadow(0 0 35px rgba(236, 72, 153, 0.35)) drop-shadow(0 0 80px rgba(139, 92, 246, 0.2))'
+            }}
+          />
+        )
       )}
     </div>
   );

@@ -2,7 +2,15 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:thepixelcompany.in)",
-      "Bash(npx vite:*)"
+      "Bash(npx vite:*)",
+      "Bash(xargs grep:*)",
+      "Read(//c/Users/mades/.claude/plugins/cache/playwright-skill/playwright-skill/4.1.0/skills/playwright-skill/**)",
+      "Bash(node -e \"require\\('./lib/helpers'\\).detectDevServers\\(\\).then\\(servers => console.log\\(JSON.stringify\\(servers\\)\\)\\)\")",
+      "Bash(mv \"pmh6jCxOdhj665vmnJoQ+zSYM8JMJz7s.mp4\" \"reel1.mp4\")",
+      "Bash(mv \"7OuaZPiCLuFKIvqj6AGk+zYU19wZ82QQ.mp4\" \"reel2.mp4\")",
+      "Bash(mv \"EaKoTtBdOrS9tfEuLJcS+iKYmCdPv61E.mp4\" \"reel3.mp4\")",
+      "Bash(mv \"Tpg9f04l3tD20Z1VRyX6+513jaqFQQcY.mp4\" \"reel4.mp4\")",
+      "Bash(mv \"WLizwvFlV1Y5Nd9f6eOF+yLkFS2rg514.mp4\" \"reel5.mp4\")"
     ]
   }
 }

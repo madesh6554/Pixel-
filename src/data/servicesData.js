@@ -121,14 +121,14 @@ export const servicesData = [
     title: 'Branding',
     icon: 'Palette',
     color: '#F59E0B',
-    tagline: 'People don\'t buy products. They buy identities.',
+    tagline: 'Build a Brand People Choose, Not Just Notice',
     images: [
       'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=600&h=450&q=80',
       'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&h=450&q=80',
       'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&h=450&q=80',
     ],
     heroDesc:
-      "A great brand isn't just a logo — it's the feeling people get when they hear your name. We help you define who you are, what you stand for, and how the world should see you. Then we make it impossible to ignore.",
+      "People now look for brands that go further than just selling. Pixel guides brands and individuals to create purpose-driven impact that matters. Your brand should speak before you do and it should tell the right story every time. Work with Pixel to build an identity that feels confident and consistent.",
     offerings: [
       { icon: 'Pen', title: 'Logo Design & Visual Identity', desc: 'Logos, colour palettes, and typography systems that scale from business card to billboard.' },
       { icon: 'BookOpen', title: 'Brand Guidelines', desc: 'A complete rulebook so your brand stays consistent across every platform and touchpoint.' },

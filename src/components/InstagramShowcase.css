@@ -1,0 +1,248 @@
+.ig-showcase {
+  position: relative;
+  background:
+    radial-gradient(ellipse at top, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(236, 72, 153, 0.06) 0%, transparent 60%),
+    var(--bg-main);
+  overflow: hidden;
+}
+
+.ig-showcase-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+  text-align: center;
+  border: 1px dashed var(--bg-border);
+  border-radius: 24px;
+}
+
+.ig-showcase-empty code {
+  background: var(--bg-secondary);
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  color: var(--accent-primary);
+}
+
+.ig-showcase-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 4rem;
+}
+
+.ig-showcase-head h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.ig-showcase-head .highlight {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ig-showcase-head p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.ig-handle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--bg-border);
+  border-radius: 999px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.ig-handle:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+  background: rgba(139, 92, 246, 0.08);
+}
+
+/* Stage */
+.ig-stage {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  perspective: 1400px;
+  perspective-origin: 50% 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ig-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cards */
+.ig-card {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 280px;
+  aspect-ratio: 9 / 16;
+  margin: auto;
+  transform-origin: center center;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg-secondary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  transition:
+    transform 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 400ms ease,
+    box-shadow 400ms ease;
+  will-change: transform, opacity;
+}
+
+.ig-card.is-active {
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(139, 92, 246, 0.4),
+    0 0 60px rgba(139, 92, 246, 0.35);
+  cursor: default;
+}
+
+.ig-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ig-card-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.ig-card.is-active .ig-card-shade {
+  opacity: 1;
+}
+
+/* Nav buttons */
+.ig-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(19, 20, 27, 0.75);
+  border: 1px solid var(--bg-border);
+  backdrop-filter: blur(10px);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: var(--transition-smooth);
+}
+
+.ig-nav:hover {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.ig-nav-prev {
+  left: 2rem;
+}
+.ig-nav-next {
+  right: 2rem;
+}
+
+/* Dots */
+.ig-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+}
+
+.ig-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg-border);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: var(--transition-smooth);
+}
+
+.ig-dot:hover {
+  background: var(--text-secondary);
+}
+
+.ig-dot.is-active {
+  background: var(--accent-primary);
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .ig-stage {
+    height: 480px;
+  }
+  .ig-card {
+    width: 240px;
+  }
+  .ig-nav-prev {
+    left: 1rem;
+  }
+  .ig-nav-next {
+    right: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ig-stage {
+    height: 440px;
+    perspective: 900px;
+  }
+  .ig-card {
+    width: 200px;
+  }
+  .ig-nav {
+    width: 40px;
+    height: 40px;
+  }
+  .ig-showcase-head {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ig-card {
+    transition: opacity 300ms ease;
+  }
+}

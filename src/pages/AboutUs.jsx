@@ -5,21 +5,22 @@ import { Users, Target, Rocket, Mail, MessageCircle } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Problem from '../components/Problem';
+import InstagramShowcase from '../components/InstagramShowcase';
+import LiveInstagramFeed from '../components/LiveInstagramFeed';
 import './AboutUs.css';
 import aboutImage from '../assets/partners images/About-Us.webp';
+import reelShahz from '../assets/reels/Shahz.mp4';
+import reelDaniel from '../assets/reels/Daniel.mp4';
+import reelKalai from '../assets/reels/Kalai.mp4';
+import reelVeera from '../assets/reels/Veera.mp4';
+import reelFathima from '../assets/reels/Fathima.mp4';
 
-const teamMembers = [
-  { name: 'Shahz', role: 'Founding Pixel' },
-  { name: 'Pranab', role: 'Creative Pixel' },
-  { name: 'Anirudh', role: 'Strategy Pixel' },
-  { name: 'Daniel', role: 'Design Pixel' },
-  { name: 'Dhinesh', role: 'Dev Pixel' },
-  { name: 'Subhiksha', role: 'Media Pixel' },
-  { name: 'Gokul', role: 'Ads Pixel' },
-  { name: 'Ashique', role: 'Video Pixel' },
-  { name: 'Kalai', role: 'Growth Pixel' },
-  { name: 'Veera', role: 'Motion Pixel' },
-  { name: 'Fathima', role: 'Systems Pixel' },
+const pixelReels = [
+  { src: reelShahz, name: 'Shahz', role: 'Founding Pixel' },
+  { src: reelDaniel, name: 'Daniel', role: 'Design Pixel' },
+  { src: reelKalai, name: 'Kalai', role: 'Growth Pixel' },
+  { src: reelVeera, name: 'Veera', role: 'Motion Pixel' },
+  { src: reelFathima, name: 'Fathima', role: 'Systems Pixel' },
 ];
 
 const AboutUs = () => {
@@ -139,23 +140,28 @@ const AboutUs = () => {
               <p>A collective of specialist minds building for tomorrow.</p>
             </header>
 
-            <div className="team-grid">
-              {teamMembers.map((member, i) => (
-                <motion.div 
+            <div className="pixel-reels-strip">
+              {pixelReels.map((reel, i) => (
+                <motion.div
                   key={i}
-                  className="team-card"
+                  className="reel-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.05 }}
+                  transition={{ duration: 0.5 }}
                 >
-                  <div className="team-image-placeholder">
-                    {/* Placeholder for Animated GIF aesthetic */}
-                    <div className="logo-icon-small">✦</div>
-                  </div>
-                  <div className="team-info">
-                    <h3 className="team-name">{member.name}</h3>
-                    <p className="team-role">{member.role}</p>
+                  <video
+                    src={reel.src}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    disablePictureInPicture
+                  />
+                  <div className="reel-info">
+                    <h3 className="reel-name">{reel.name}</h3>
+                    <p className="reel-role">{reel.role}</p>
                   </div>
                 </motion.div>
               ))}
@@ -163,7 +169,13 @@ const AboutUs = () => {
           </div>
         </section>
 
-        {/* 4. Final About CTA */}
+        {/* 4. Instagram Showcase (cinematic 3D — hero reels) */}
+        <InstagramShowcase />
+
+        {/* 5. Live Instagram Feed (auto-synced grid) */}
+        <LiveInstagramFeed />
+
+        {/* 6. Final About CTA */}
         <section className="about-cta section-padding">
           <div className="container">
             <div className="cta-box">

@@ -1,0 +1,2 @@
+Drop Instagram reel MP4s here. Recommended: reel-01.mp4, reel-02.mp4, ... (vertical 9:16).
+The InstagramShowcase component auto-detects every .mp4 in this folder and renders them in alphabetical order.

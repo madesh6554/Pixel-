@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PixelAssembler from './PixelAssembler';
 import './Header.css';
 
 const Header = () => {
@@ -7,7 +8,15 @@ const Header = () => {
     <header className="main-header">
       <div className="container nav-container">
         <NavLink to="/" className="logo-link" aria-label="The Pixel Company Home">
-          <img src="/logo.png" alt="The Pixel Company Logo" className="logo" />
+          <div className="logo-assembler">
+            <PixelAssembler
+              src="/logo.png"
+              alt="The Pixel Company Logo"
+              className="logo"
+              replayInterval={30000}
+              minimal
+            />
+          </div>
         </NavLink>
         <nav className="desktop-nav" aria-label="Main Navigation">
           <ul className="nav-list">

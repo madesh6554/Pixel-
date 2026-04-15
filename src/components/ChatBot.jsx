@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Fuse from 'fuse.js';
-import { MessageCircle, X, Send, Bot, User, Sparkles } from 'lucide-react';
+import { MessageCircle, X, Send, User } from 'lucide-react';
 import { knowledge } from '../data/chatKnowledge';
+import botMascot from '../assets/purple_bot.png';
 import './ChatBot.css';
 
 // ── Fuse.js setup ─────────────────────────────────────────
@@ -44,7 +45,11 @@ const TypingDots = () => (
 const Bubble = ({ msg }) => (
   <div className={`cb-bubble-wrap cb-${msg.from}`}>
     <div className="cb-avatar">
-      {msg.from === 'bot' ? <Bot size={14} /> : <User size={14} />}
+      {msg.from === 'bot' ? (
+        <img src={botMascot} alt="Bot" className="cb-mascot-img" />
+      ) : (
+        <User size={14} />
+      )}
     </div>
     <div className="cb-bubble">{msg.text}</div>
   </div>
@@ -102,7 +107,7 @@ const ChatBot = () => {
         onClick={() => setOpen((o) => !o)}
         aria-label="Open chat assistant"
       >
-        {open ? <X size={22} /> : <MessageCircle size={22} />}
+        {open ? <X size={22} /> : <img src={botMascot} alt="Chat" className="cb-trigger-mascot" />}
         {!open && <span className="cb-trigger-dot" />}
       </button>
 
@@ -112,7 +117,7 @@ const ChatBot = () => {
         <div className="cb-header">
           <div className="cb-header-left">
             <div className="cb-header-avatar">
-              <Sparkles size={16} />
+              <img src={botMascot} alt="Bot" className="cb-header-mascot" />
             </div>
             <div>
               <p className="cb-header-name">Pixel Assistant</p>
@@ -136,7 +141,9 @@ const ChatBot = () => {
           {/* Typing indicator */}
           {typing && (
             <div className="cb-bubble-wrap cb-bot">
-              <div className="cb-avatar"><Bot size={14} /></div>
+              <div className="cb-avatar">
+                <img src={botMascot} alt="Bot" className="cb-mascot-img" />
+              </div>
               <div className="cb-bubble"><TypingDots /></div>
             </div>
           )}
